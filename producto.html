@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Producto · RUNE</title>
+<link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.pdp { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(360px, 1fr); gap: 56px; align-items: start; }
+@media (max-width: 1000px) { .pdp { grid-template-columns: 1fr; gap: 32px; } }
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--rune-ceniza); border: 1px solid var(--rune-ceniza); }
+.gallery .main { grid-column: 1 / -1; aspect-ratio: 688 / 384; }
+.gallery .main img { transform: scale(1.06); }
+.gallery .detail { aspect-ratio: 1 / 1; }
+.gallery .detail img { object-fit: cover; }
+.gallery .cap { position: absolute; left: 12px; bottom: 12px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-secondary); background: var(--bg-page); padding: 5px 8px; z-index: 1; }
+.buy { position: sticky; top: calc(var(--sticky-top, 112px) + 24px); display: flex; flex-direction: column; gap: 28px; }
+@media (max-width: 1000px) { .buy { position: static; } }
+.opt-grid { display: grid; gap: 8px; }
+.opt-grid.r4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.opt-grid.sizes { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.opt { min-height: 48px; border: 1px solid var(--border-hairline); background: transparent; color: var(--text-primary); font-size: 14px; font-weight: 500; letter-spacing: .06em; cursor: pointer; border-radius: 0; transition: border-color var(--dur-fast) var(--ease-out); }
+.opt:hover { border-color: var(--border-strong); }
+.opt[aria-pressed="true"] { background: var(--rune-basalto); border-color: var(--rune-basalto); color: var(--rune-hueso); }
+.opt-grid.err .opt { border-color: var(--text-danger); }
+fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+legend { padding: 0; margin-bottom: 12px; width: 100%; display: flex; justify-content: space-between; }
+.price { font-family: var(--font-display); font-weight: 700; font-size: 40px; letter-spacing: -0.02em; line-height: 1; }
+.perks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--rune-ceniza); border: 1px solid var(--rune-ceniza); }
+.perks > div { background: var(--bg-page); padding: 16px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.4; }
+</style>
+</head>
+<body>
+<div data-site-header data-active="coleccion"></div>
+
+<main id="contenido">
+  <section class="wrap" style="padding-top:32px">
+    <nav class="crumbs" aria-label="Ruta"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><a href="coleccion.html">Colección</a><span aria-hidden="true">/</span><a id="crumb-g" href="coleccion.html"></a><span aria-hidden="true">/</span><span aria-current="page" id="crumb"></span></nav>
+  </section>
+
+  <section class="wrap" style="padding-top:24px">
+    <div class="pdp">
+      <div class="gallery">
+        <div class="stage main"><img id="img-main" src="" alt="" width="688" height="384"><span class="cap">Vista lateral</span></div>
+        <div class="stage detail"><img id="img-upper" src="" alt="" style="transform:scale(2.1);transform-origin:52% 32%"><span class="cap">Detalle upper</span></div>
+        <div class="stage detail"><img id="img-sole" src="" alt="" style="transform:scale(2.1);transform-origin:40% 76%"><span class="cap">Detalle suela</span></div>
+      </div>
+
+      <div class="buy">
+        <div class="stack gap-12">
+          <span class="lbl-sm muted" id="meta"></span>
+          <h1 class="h1" id="name" style="font-size:clamp(40px,4.4vw,56px)"></h1>
+          <p class="lead muted" id="spec"></p>
+        </div>
+
+        <div class="row-between" style="justify-content:flex-start;gap:16px">
+          <span class="price" data-price></span>
+          <span class="tag tag--acc" data-region-name></span>
+        </div>
+
+        <fieldset>
+          <legend><span class="lbl-sm muted">Tu región</span></legend>
+          <div class="opt-grid r4" id="regions"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="lbl-sm muted">Talla EU</span><a class="link small" href="ayuda.html#tallas">Guía de tallas</a></legend>
+          <div class="opt-grid sizes" id="sizes"></div>
+          <p class="small" id="size-err" style="color:var(--text-danger);margin-top:10px" hidden>Elige una talla para continuar.</p>
+        </fieldset>
+
+        <div class="btns">
+          <button type="button" class="btn btn--accent" id="add" style="flex:1 1 220px">Añadir a la bolsa</button>
+          <a class="btn btn--secondary" href="tiendas.html" style="flex:1 1 180px">Ver en tiendas</a>
+        </div>
+        <div class="status" role="status" id="added" hidden><span data-icon="check-circle" data-size="20"></span><span id="added-txt"></span><button type="button" class="link" id="see-bag" style="background:none;border:0;cursor:pointer;margin-left:auto;padding:0;min-height:32px">Ver bolsa</button></div>
+
+        <div class="perks">
+          <div><span data-icon="truck" data-size="20"></span>Envío gratuito desde el almacén de tu región</div>
+          <div><span data-icon="return" data-size="20"></span>Cambios de talla en tienda o por correo</div>
+          <div><span data-icon="shield-check" data-size="20"></span>Calidad 10 de 10 en cada región</div>
+        </div>
+        <p class="caption">Precio online medio de la región. En tiendas, el precio final lo fija cada minorista autorizado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="sh"><span class="idx">Ficha</span><h2>Construcción</h2></div>
+    <div class="cells g-4">
+      <div class="card"><span class="k">Upper</span><span class="t" id="c-upper"></span><span class="d">Sin costuras en la zona de flexión. Transpirable y ligero.</span></div>
+      <div class="card"><span class="k">Mediasuela</span><span class="t">Doble densidad</span><span class="d">Firme en el talón, reactiva en el antepié.</span></div>
+      <div class="card"><span class="k">Uso</span><span class="t" id="c-use"></span><span class="d" id="c-use-d"></span></div>
+      <div class="card"><span class="k">Calidad</span><span class="t">10 de 10</span><span class="d">Mismo estándar en las plantas de Norteamérica y Asia-Pacífico.</span></div>
+    </div>
+  </section>
+
+  <section class="wrap section section--last">
+    <div class="sh"><span class="idx">Para el mismo uso</span><h2 id="rel-title">También te puede interesar</h2><a class="link-arrow aside" id="rel-link" href="coleccion.html">Ver todos <span data-icon="arrow-right" data-size="16"></span></a></div>
+    <div class="cells g-4" id="related"></div>
+  </section>
+</main>
+
+<div data-site-footer></div>
+
+<script src="js/data.js"></script>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var R = window.RUNE, D = R.data;
+  var p = R.byId((R.params.get('ref') || '').toLowerCase()) || D.products[0];
+  var use = D.uses.filter(function (u) { return u.key === p.use; })[0];
+  var size = null;
+  var sizes = p.gender === 'Mujer' ? ['35', '36', '37', '38', '39', '40', '41', '42'] : ['39', '40', '41', '42', '43', '44', '45', '46'];
+
+  document.title = p.name + ' · RUNE';
+  ['img-main', 'img-upper', 'img-sole'].forEach(function (id) { document.getElementById(id).src = p.img; });
+  document.getElementById('img-main').alt = p.name + ', vista lateral';
+  document.getElementById('crumb').textContent = p.name;
+  var cg = document.getElementById('crumb-g'); cg.textContent = p.gender; cg.href = 'coleccion.html?genero=' + p.gender.toLowerCase();
+  document.getElementById('meta').textContent = p.use + ' · ' + p.gender + ' · Ref. ' + p.ref;
+  document.getElementById('name').textContent = p.name;
+  document.getElementById('spec').textContent = p.spec + ' Mediasuela de doble densidad y la misma construcción en cualquier región.';
+  document.getElementById('c-upper').textContent = /punto|knit/i.test(p.spec + p.name) ? 'Punto de una sola pieza' : /piel|ante/i.test(p.spec) ? 'Piel y malla' : 'Malla técnica';
+  document.getElementById('c-use').textContent = p.use;
+  document.getElementById('c-use-d').textContent = use.desc;
+
+  var regEl = document.getElementById('regions');
+  function drawRegions() {
+    var cur = R.region().key;
+    regEl.innerHTML = D.regions.map(function (r) {
+      return '<button type="button" class="opt" data-k="' + r.key + '" aria-pressed="' + (r.key === cur) + '" aria-label="' + r.name + '">' + r.code + '</button>';
+    }).join('');
+  }
+  regEl.addEventListener('click', function (e) { var b = e.target.closest('[data-k]'); if (b) R.setRegion(b.getAttribute('data-k')); });
+  document.addEventListener('rune:region', drawRegions);
+  drawRegions();
+
+  var sizeEl = document.getElementById('sizes');
+  function drawSizes() {
+    sizeEl.innerHTML = sizes.map(function (s) { return '<button type="button" class="opt" data-s="' + s + '" aria-pressed="' + (s === size) + '">' + s + '</button>'; }).join('');
+  }
+  sizeEl.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-s]'); if (!b) return;
+    size = b.getAttribute('data-s'); sizeEl.classList.remove('err'); document.getElementById('size-err').hidden = true;
+    document.getElementById('added').hidden = true; drawSizes();
+  });
+  drawSizes();
+
+  document.getElementById('add').addEventListener('click', function () {
+    if (!size) { sizeEl.classList.add('err'); document.getElementById('size-err').hidden = false; return; }
+    R.addToBag(p.id, size);
+    document.getElementById('added-txt').textContent = p.name + ' · talla EU ' + size + ' añadida a tu bolsa.';
+    document.getElementById('added').hidden = false;
+  });
+  document.getElementById('see-bag').addEventListener('click', function (e) { e.stopPropagation(); R.openBag(); });
+
+  var rel = D.products.filter(function (x) { return x.use === p.use && x.id !== p.id; })
+    .sort(function (a, b) { return (a.gender === p.gender ? 0 : 1) - (b.gender === p.gender ? 0 : 1) || a.order - b.order; }).slice(0, 4);
+  document.getElementById('related').innerHTML = rel.map(function (x) { return R.productCard(x); }).join('');
+  document.getElementById('rel-title').textContent = 'Más modelos de ' + p.use.toLowerCase();
+  document.getElementById('rel-link').href = 'coleccion.html?uso=' + encodeURIComponent(p.use);
+
+  var hdr = document.querySelector('.site-header');
+  if (hdr) document.documentElement.style.setProperty('--sticky-top', hdr.offsetHeight + 'px');
+})();
+</script>
+</body>
+</html>

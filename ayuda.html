@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ayuda · RUNE</title>
+<link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.faq { border-top: 1px solid var(--border-strong); }
+.faq details { border-bottom: 1px solid var(--border-hairline); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 16px 0; font-family: var(--font-display); font-weight: 600; font-size: 20px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary .ico { transition: transform var(--dur-base) var(--ease-out); }
+.faq details[open] summary .ico { transform: rotate(45deg); }
+.faq summary:hover { color: var(--petroleo-ui); }
+.faq p { padding: 0 0 24px; max-width: 70ch; color: var(--text-secondary); }
+section[id] { scroll-margin-top: 140px; }
+</style>
+</head>
+<body>
+<div data-site-header data-active="ayuda"></div>
+
+<main id="contenido">
+  <section class="wrap page-head">
+    <nav class="crumbs" aria-label="Ruta"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">Ayuda</span></nav>
+    <h1 class="h1">¿En qué te ayudamos?</h1>
+    <p class="lead muted" style="max-width:56ch">Envíos, devoluciones, tallas y garantía. Si no encuentras la respuesta, escríbenos.</p>
+  </section>
+
+  <section class="wrap">
+    <div class="cells g-4">
+      <a class="cell cell--sm" href="#faq"><span data-icon="truck" data-size="24"></span><span class="h4">Envío gratuito</span><span class="small muted">Desde el almacén de tu región.</span></a>
+      <a class="cell cell--sm" href="#faq"><span data-icon="return" data-size="24"></span><span class="h4">Devoluciones</span><span class="small muted">Plazos y condiciones.</span></a>
+      <a class="cell cell--sm" href="#tallas"><span data-icon="size" data-size="24"></span><span class="h4">Guía de tallas</span><span class="small muted">EU y largo del pie.</span></a>
+      <a class="cell cell--sm" href="#faq"><span data-icon="shield-check" data-size="24"></span><span class="h4">Garantía</span><span class="small muted">Defectos de fabricación.</span></a>
+    </div>
+  </section>
+
+  <section id="faq" class="wrap section">
+    <div class="sh"><span class="idx">01</span><h2>Preguntas frecuentes</h2></div>
+    <div class="faq">
+      <details open><summary>¿Desde dónde se envía mi pedido?<span data-icon="plus" data-size="20"></span></summary><p>Desde el almacén de distribución de tu región: Norteamérica, Europa-África, Asia-Pacífico o Latinoamérica.</p></details>
+      <details><summary>¿Cuánto cuesta el envío?<span data-icon="plus" data-size="20"></span></summary><p>Nada. El envío es gratuito en las cuatro regiones para todas las compras en la tienda online.</p></details>
+      <details><summary>¿Puedo devolver un par?<span data-icon="plus" data-size="20"></span></summary><p>[Plazo y condiciones de devolución].</p></details>
+      <details><summary>¿El precio online es igual al de las tiendas?<span data-icon="plus" data-size="20"></span></summary><p>El precio online es un precio de referencia por región. En tiendas, el precio final lo fija cada minorista autorizado.</p></details>
+      <details><summary>¿Qué cubre la garantía?<span data-icon="plus" data-size="20"></span></summary><p>[Cobertura de garantía por defectos de fabricación].</p></details>
+    </div>
+  </section>
+
+  <section id="tallas" class="wrap section">
+    <div class="sh"><span class="idx">02</span><h2>Guía de tallas</h2><span class="aside caption">Mide tu pie de pie, del talón a la punta del dedo más largo.</span></div>
+    <div class="table-box">
+      <table class="t">
+        <tbody id="sizes"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="contacto" class="wrap section section--last">
+    <div class="band-muted" style="padding:clamp(32px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px;align-items:start">
+      <div class="stack gap-16">
+        <span class="lbl muted">03 · Contacto</span>
+        <h2 class="h2">Escríbenos.</h2>
+        <p class="muted">Te responde el equipo de atención de <span data-region-name></span>.</p>
+      </div>
+      <form class="stack gap-16" id="contact" novalidate>
+        <label class="field"><span>Correo</span><input type="email" name="correo" placeholder="nombre@correo.com" required></label>
+        <label class="field"><span>Número de pedido</span><input type="text" name="pedido" placeholder="Opcional"></label>
+        <label class="field"><span>Mensaje</span><textarea name="mensaje" placeholder="¿En qué te ayudamos?" required></textarea></label>
+        <div><button class="btn btn--primary" type="submit">Enviar</button></div>
+        <div class="status" role="status" id="ok" hidden><span data-icon="check-circle" data-size="20"></span>Mensaje enviado. Te responderemos por correo.</div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<div data-site-footer></div>
+<script src="js/data.js"></script>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var s = [['35','22.0'],['36','22.7'],['37','23.3'],['38','24.0'],['39','24.7'],['40','25.3'],['41','26.0'],['42','26.7'],['43','27.3'],['44','28.0'],['45','28.7'],['46','29.3']];
+  document.getElementById('sizes').innerHTML =
+    '<tr><th scope="row">Talla EU</th>' + s.map(function (x) { return '<td>' + x[0] + '</td>'; }).join('') + '</tr>' +
+    '<tr><th scope="row">Largo del pie (cm)</th>' + s.map(function (x) { return '<td>' + x[1] + '</td>'; }).join('') + '</tr>';
+
+  var f = document.getElementById('contact');
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true;
+    f.querySelectorAll('[required]').forEach(function (i) {
+      var lab = i.closest('.field'); var err = lab.querySelector('.err'); if (err) err.remove();
+      lab.classList.remove('error');
+      if (!i.checkValidity()) { ok = false; lab.classList.add('error'); lab.insertAdjacentHTML('beforeend', '<span class="err">' + (i.type === 'email' && i.value ? 'Revisa el formato del correo.' : 'Completa este campo.') + '</span>'); }
+    });
+    document.getElementById('ok').hidden = !ok;
+  });
+})();
+</script>
+</body>
+</html>

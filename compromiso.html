@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compromiso RUNE</title>
+<link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.idx-box { background: var(--rune-basalto); color: var(--rune-hueso); padding: 40px; display: flex; flex-direction: column; gap: 12px; }
+.idx-box .v { font-family: var(--font-display); font-weight: 800; font-size: clamp(72px, 9vw, 120px); line-height: .9; letter-spacing: -0.04em; }
+.pillar .detail { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border-hairline); font-size: 13px; color: var(--text-secondary); }
+</style>
+</head>
+<body>
+<div data-site-header data-active="compromiso"></div>
+
+<main id="contenido">
+  <section class="wrap" style="padding-top:96px;padding-bottom:48px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:end">
+      <div class="stack gap-24">
+        <span class="lbl muted">Compromiso RUNE</span>
+        <h1 class="display">Responsables en cada paso.</h1>
+        <p class="lead muted" style="max-width:48ch">La calidad también se mide en cómo se fabrica: quién lo hace, con qué y para quién.</p>
+      </div>
+      <div class="idx-box">
+        <span class="lbl muted-inv">Índice de imagen · Año 15</span>
+        <span class="v">100</span>
+        <span class="small" style="color:var(--rune-ceniza)">Resultado de calidad, cuota de mercado y ciudadanía empresarial acumulada.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="sh"><span class="idx">01</span><h2>Nuestros compromisos</h2></div>
+    <div class="cells g-5" id="pillars"></div>
+  </section>
+
+  <section class="wrap section">
+    <div class="cells g-2">
+      <div class="photo" style="min-height:440px"><img src="img/marca/Packaging_Rune.jpg" alt="Caja RUNE con papel de seda y bolsa de papel" style="position:absolute;inset:0;object-position:50% 60%" loading="lazy"></div>
+      <div class="cell" style="padding:48px;justify-content:center;gap:18px">
+        <span class="lbl muted">Medio ambiente · Empaque</span>
+        <h2 class="h2">Una caja que no se tira.</h2>
+        <p class="muted">Cajas y envases reciclados, papel de seda estampado con el patrón de runas y una bolsa pensada para reutilizarse.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section section--last">
+    <div class="band-muted" style="padding:clamp(32px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:32px;align-items:center">
+      <div class="stack gap-12">
+        <span class="lbl muted">Informe</span>
+        <h2 class="h2">Informe de ciudadanía empresarial</h2>
+        <p class="muted">Iniciativas, inversión y resultados de cada año, publicados junto al informe anual.</p>
+      </div>
+      <div><a class="btn btn--primary" href="inversionistas.html#documentos">Ir a Inversionistas</a></div>
+    </div>
+  </section>
+</main>
+
+<div data-site-footer></div>
+<script src="js/data.js"></script>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var R = window.RUNE;
+  var P = [
+    ['users', 'Personas', 'Mejores condiciones de trabajo', 'Guardería y cafetería para los trabajadores de las plantas de Norteamérica y Asia-Pacífico.', 'Condiciones en planta · guardería · cafetería'],
+    ['check-circle', 'Ética', 'Capacitación en ética y cumplimiento', 'Formación continua para que cada decisión, en planta y en oficina, respete nuestro código.', 'Capacitación en ética y cumplimiento'],
+    ['shield-check', 'Proveedores', 'Cadena de suministro responsable', 'Un código de conducta para proveedores y monitoreo de su cumplimiento.', 'Código de conducta y monitoreo'],
+    ['bolt', 'Medio ambiente', 'Menos energía, menos residuos', 'Cajas y envases reciclados, y eficiencia energética en nuestras plantas.', 'Envases reciclados · eficiencia energética'],
+    ['heart', 'Comunidad', 'Contribuciones caritativas', 'Apoyo a causas sociales en las comunidades donde fabricamos y vendemos.', 'Contribuciones caritativas']
+  ];
+  document.getElementById('pillars').innerHTML = P.map(function (p) {
+    return '<div class="cell pillar">' + R.icon(p[0], 32) + '<span class="lbl-sm muted" style="margin-top:12px">' + p[1] + '</span><span class="h4">' + p[2] + '</span><span class="small muted">' + p[3] + '</span><span class="detail">Iniciativa: ' + p[4] + '</span></div>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

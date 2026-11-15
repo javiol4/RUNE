@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nuestra historia · RUNE</title>
+<link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border-strong); }
+.steps li { display: grid; grid-template-columns: 200px 64px minmax(0, 1fr); gap: 12px 32px; padding: 32px 0; border-bottom: 1px solid var(--border-hairline); align-items: start; }
+.steps .y { font-family: var(--font-display); font-weight: 700; font-size: 30px; letter-spacing: -0.02em; line-height: 1.1; }
+.steps .km { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-secondary); padding-top: 10px; }
+.steps li:last-child .y { color: var(--petroleo-ui); }
+@media (max-width: 760px) { .steps li { grid-template-columns: 1fr; gap: 8px; } .steps .km { padding-top: 0; } }
+</style>
+</head>
+<body>
+<div data-site-header data-active="historia"></div>
+
+<main id="contenido">
+  <section class="wrap" style="padding-top:96px;padding-bottom:48px">
+    <div class="split" style="align-items:end">
+      <div class="stack gap-24">
+        <span class="lbl muted">Nuestra historia</span>
+        <h1 class="display">Distancia larga.</h1>
+      </div>
+      <p class="lead muted">Dos integrantes de un equipo universitario de marcha no encontraban calzado para correr largas distancias. Con un ingeniero mecánico que dirigía una planta, fundaron RUNE en Ohio.</p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="route acc-global" style="min-height:160px">
+      <div class="marks"><span>Año 1 · Ohio</span><span>Año 15 · Cuatro regiones</span></div>
+      <div class="rl"><i></i><span data-symbol></span></div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <ol class="steps" id="steps"></ol>
+    <p class="caption" style="margin-top:16px">Fuente: descripción del caso del simulador (Años 1–10) y resultados de la compañía (Años 11–15).</p>
+  </section>
+
+  <section class="wrap section">
+    <div class="cells g-2">
+      <div class="photo" style="min-height:420px"><img src="img/marca/Packaging_Rune.jpg" alt="Caja y bolsa RUNE con el patrón de runas" style="position:absolute;inset:0" loading="lazy"></div>
+      <div class="cell" style="padding:48px;justify-content:center;gap:18px">
+        <span class="lbl muted">El nombre</span>
+        <h2 class="h2">Raidō: la runa del viaje.</h2>
+        <p class="muted">El símbolo de RUNE se construye con regla: trazo recto, uniones en ángulo, extremos rectos. Es la meta de cada línea de recorrido, del Km 00 al Km 42.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="equipo" class="wrap section section--last">
+    <div class="band-muted" style="padding:clamp(32px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:32px;align-items:center">
+      <div class="stack gap-12">
+        <span class="lbl muted">Trabaja con nosotros</span>
+        <h2 class="h2">Construye el siguiente kilómetro.</h2>
+        <p class="muted">Plantas en Norteamérica y Asia-Pacífico, almacenes en las cuatro regiones y equipos de diseño, marketing y finanzas.</p>
+      </div>
+      <div><a class="btn btn--primary" href="ayuda.html#contacto">Ver vacantes</a></div>
+    </div>
+  </section>
+</main>
+
+<div data-site-footer></div>
+<script src="js/data.js"></script>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var steps = [
+    ['Año 1', 'Fundación en Ohio', 'Tres cofundadores, USD 35,000 de capital inicial y un préstamo familiar de USD 50,000 para capital de trabajo.'],
+    ['Años 1–2', 'Los años difíciles', 'La compañía pierde dinero mientras el producto gana aceptación y la fabricación se vuelve más eficiente.'],
+    ['Año 5', 'Primer millón de capacidad', 'La demanda llega a 775,000 pares e ingresos de USD 17 millones. La planta de Ohio se amplía a 1 millón de pares al año.'],
+    ['Año 6', 'Planta propia y salida a bolsa', 'Se construye una planta de última generación en Estados Unidos y la compañía sale a bolsa con 10 millones de acciones.'],
+    ['Año 8', 'Llegada a Asia-Pacífico', 'Se construye la planta de Asia. Ambas plantas se amplían luego a 4 millones de pares cada una.'],
+    ['Año 10', 'Marca global', 'Ventas de USD 433 millones en cuatro regiones; el 21 % ya se vende online.'],
+    ['Años 11–15', 'Diferenciación por calidad', 'Nueva gerencia y una apuesta: la misma calidad en cada región. En el Año 15, 11.55 millones de pares vendidos, calificación crediticia A+ e índice de imagen 100.']
+  ];
+  document.getElementById('steps').innerHTML = steps.map(function (s, i) {
+    return '<li><span class="y">' + s[0] + '</span><span class="km">Km ' + String(i * 7).padStart(2, '0') + '</span><div class="stack gap-8"><span class="h4">' + s[1] + '</span><span class="muted">' + s[2] + '</span></div></li>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

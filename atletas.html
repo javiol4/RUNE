@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atletas RUNE</title>
+<link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.kv { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: var(--rune-grafito); border: 1px solid var(--rune-grafito); }
+.kv a { display: block; text-decoration: none; }
+.kv .photo { aspect-ratio: 3 / 4; }
+@media (max-width: 900px) { .kv { grid-template-columns: repeat(2, minmax(0, 1fr)); } .kv a:last-child { grid-column: 1 / -1; } .kv a:last-child .photo { aspect-ratio: 16 / 9; } }
+
+.ath { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1px; background: var(--rune-ceniza); border: 1px solid var(--rune-ceniza); scroll-margin-top: 140px; }
+.ath + .ath { margin-top: 48px; }
+.ath:nth-child(even) .ath-media { order: 2; }
+.ath-media { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1px; background: var(--rune-ceniza); min-height: 560px; }
+.ath-media .photo { height: 100%; }
+.ath-media .photo img { position: absolute; inset: 0; }
+.ath-info { background: var(--bg-page); display: flex; flex-direction: column; }
+.ath-info .txt { padding: 40px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+.ath-info .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--rune-ceniza); border-top: 1px solid var(--rune-ceniza); border-bottom: 1px solid var(--rune-ceniza); }
+.ath-info .facts > div { background: var(--bg-page); padding: 16px 20px; display: flex; flex-direction: column; gap: 6px; }
+.ath-info .facts .v { font-family: var(--font-display); font-weight: 600; font-size: 17px; }
+.ath-info .route { min-height: 0; }
+@media (max-width: 1000px) {
+  .ath { grid-template-columns: 1fr; }
+  .ath:nth-child(even) .ath-media { order: 0; }
+  .ath-media { min-height: 0; grid-template-columns: 1.6fr 1fr; aspect-ratio: 4 / 3; }
+}
+@media (max-width: 560px) { .ath-info .facts { grid-template-columns: 1fr; } .ath-info .txt { padding: 28px 20px; } }
+
+.tl { display: grid; grid-template-columns: minmax(120px, 1.3fr) repeat(4, minmax(90px, 1fr)); gap: 1px; background: var(--rune-ceniza); border: 1px solid var(--rune-ceniza); min-width: 620px; }
+.tl > div { background: var(--bg-page); padding: 14px 16px; font-size: 15px; }
+.tl .h { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-secondary); background: var(--surface-muted); }
+.tl .on { background: var(--rune-basalto); color: var(--rune-hueso); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+.tl .tn { font-family: var(--font-display); font-weight: 600; }
+</style>
+</head>
+<body>
+<div data-site-header data-active="atletas"></div>
+
+<main id="contenido">
+  <section class="band-dark on-dark">
+    <div data-pattern data-cols="28" data-rows="8"></div>
+    <div class="wrap" style="position:relative;padding-top:88px;padding-bottom:72px;display:flex;flex-direction:column;gap:48px">
+      <div class="split" style="align-items:end">
+        <div class="stack gap-24">
+          <span class="lbl muted-inv">Atletas RUNE · Campañas A13–A16</span>
+          <h1 class="display">Un estándar. Cinco atletas.</h1>
+        </div>
+        <p class="lead" style="max-width:46ch;color:var(--rune-ceniza)">Atletas de alto rendimiento que exigen lo mismo que tú: un calzado que no cambia de un kilómetro al siguiente, ni de una región a otra.</p>
+      </div>
+      <div class="kv" id="kv"></div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="embajadores"></section>
+
+  <section class="wrap section">
+    <div class="sh"><span class="idx">02</span><h2>Presencia por campaña</h2><span class="aside caption">Años 13 a 16</span></div>
+    <div style="overflow-x:auto">
+      <div class="tl" role="table" aria-label="Presencia de cada atleta por año" id="tl"></div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="sh"><span class="idx">03</span><h2>El programa de embajadores</h2></div>
+    <div class="cells g-4">
+      <div class="card"><span class="k">Alcance</span><span class="t">Global</span><span class="d">Cada contrato apoya a la marca en las cuatro regiones, no en una sola.</span></div>
+      <div class="card"><span class="k">Producto</span><span class="t">Probado en competencia</span><span class="d">Los atletas usan los mismos modelos que llegan a tienda.</span></div>
+      <div class="card"><span class="k">Color</span><span class="t">El mercado decide el acento</span><span class="d">Las piezas globales van en Petróleo; cada edición regional, con su acento.</span></div>
+      <div class="card"><span class="k">Imagen</span><span class="t">Coherente con la marca</span><span class="d">Solo atletas cuyo nivel respalde una promesa de calidad.</span></div>
+    </div>
+  </section>
+
+  <section class="wrap section section--last">
+    <div class="cells g-2">
+      <div class="route acc-global" style="min-height:320px">
+        <div class="marks"><span>Km 00</span><span>Km 42</span></div>
+        <div class="rl"><i></i><span data-symbol></span></div>
+        <p class="hl">El siguiente kilómetro es tuyo.</p>
+      </div>
+      <div class="cell cell--muted" style="padding:48px;justify-content:center;gap:18px">
+        <span class="lbl muted">Los mismos modelos</span>
+        <h2 class="h2">Lo que llevan ellos, llega a tu tienda.</h2>
+        <div class="btns"><a class="btn btn--primary" href="coleccion.html">Ver los modelos</a><a class="btn btn--secondary" href="tiendas.html">Encuentra una tienda</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div data-site-footer></div>
+
+<script src="js/data.js"></script>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var R = window.RUNE, D = R.data, e = R.esc;
+
+  document.getElementById('kv').innerHTML = D.athletes.map(function (a) {
+    return '<a class="photo-link" href="#' + a.id + '"><div class="photo"><img class="bw" src="' + a.img + '" alt="' + e(a.name) + '" style="object-position:' + a.pos + '"><span class="name">' + e(a.short) + '</span></div></a>';
+  }).join('');
+
+  document.getElementById('embajadores').innerHTML =
+    '<div class="sh"><span class="idx">01</span><h2>Los embajadores</h2></div><div>' +
+    D.athletes.map(function (a, i) {
+      return '<article class="ath acc-' + a.region + '" id="' + a.id + '" aria-labelledby="n-' + a.id + '">' +
+        '<div class="ath-media">' +
+          '<div class="photo"><img src="' + a.img + '" alt="' + e(a.name) + ' con calzado RUNE" style="object-position:' + a.pos + '" loading="lazy"></div>' +
+          '<div class="photo"><img class="bw" src="' + a.img2 + '" alt="" style="object-position:' + a.pos2 + '" loading="lazy"></div>' +
+        '</div>' +
+        '<div class="ath-info">' +
+          '<div class="txt"><span class="lbl-sm muted">' + String(i + 1).padStart(2, '0') + ' · ' + e(a.sport) + '</span>' +
+          '<h3 class="h2" id="n-' + a.id + '">' + e(a.name) + '</h3>' +
+          '<p class="muted">' + e(a.text) + '</p></div>' +
+          '<div class="facts"><div><span class="lbl-sm muted">Embajador desde</span><span class="v">' + a.since + '</span></div>' +
+          '<div><span class="lbl-sm muted">Edición</span><span class="v">' + a.regionName + '</span></div>' +
+          '<div><span class="lbl-sm muted">Campaña</span><span class="v">' + e(a.campaign.split(' · ')[0]) + '</span></div></div>' +
+          '<div class="route route--slim"><div class="marks"><span>' + a.from + '</span><span>Edición ' + e(a.short) + '</span><span>' + a.to + '</span></div>' +
+          '<div class="rl"><i></i>' + R.symbol() + '</div><p class="hl">' + e(a.headline) + '</p></div>' +
+        '</div></article>';
+    }).join('') + '</div>';
+
+  var head = '<div class="h">Atleta</div><div class="h">A13</div><div class="h">A14</div><div class="h">A15</div><div class="h">A16</div>';
+  document.getElementById('tl').innerHTML = head + D.timeline.map(function (r) {
+    return '<div class="tn">' + r.name + '</div>' + r.cells.map(function (c) { return '<div class="' + (c ? 'on' : '') + '">' + (c || '<span class="sr-only">Sin presencia</span>') + '</div>'; }).join('');
+  }).join('');
+})();
+</script>
+</body>
+</html>

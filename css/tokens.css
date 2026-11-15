@@ -1,0 +1,92 @@
+/* RUNE Design System · tokens (copiados de /tokens del sistema de marca) */
+/* Webfonts — Google Fonts (sin binarios locales todavía) */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+:root {
+  /* Neutros fijos — no cambian entre regiones */
+  --rune-basalto: #0E0F11;
+  --rune-grafito: #2A2B2F;
+  --rune-piedra: #55534F;
+  --rune-gris: #7A7873;
+  --rune-liquen: #8E8C86;
+  --rune-ceniza: #C9C6BF;
+  --rune-niebla: #E8E4DC;
+  --rune-hueso: #F3F0EA;
+
+  /* Color firma global */
+  --rune-petroleo: #087E8B;
+  --rune-petroleo-ink: #F3F0EA;
+
+  /* Acentos regionales — uno por pieza, nunca combinados */
+  --rune-na: #3B5BA9;      --rune-na-ink: #F3F0EA;      /* Índigo glaciar · Norteamérica */
+  --rune-emea: #D9A03F;    --rune-emea-ink: #0E0F11;    /* Ámbar · Europa-África */
+  --rune-apac: #E8735A;    --rune-apac-ink: #0E0F11;    /* Coral · Asia-Pacífico */
+  --rune-latam: #A23B6B;   --rune-latam-ink: #F3F0EA;   /* Buganvilla · Latinoamérica */
+
+  --rune-alerta: #A33A22;
+
+  /* Semánticos */
+  --bg-page: var(--rune-hueso);
+  --surface-card: var(--rune-hueso);
+  --surface-muted: var(--rune-niebla);
+  --surface-inverse: var(--rune-basalto);
+  --surface-inverse-raised: var(--rune-grafito);
+  --text-primary: var(--rune-basalto);
+  --text-secondary: var(--rune-piedra);
+  --text-muted: var(--rune-gris);
+  --text-inverse: var(--rune-hueso);
+  --text-inverse-muted: var(--rune-liquen);
+  --border-hairline: var(--rune-ceniza);
+  --border-strong: var(--rune-basalto);
+  --accent: var(--rune-petroleo);
+  --accent-ink: var(--rune-petroleo-ink);
+  --text-danger: var(--rune-alerta);
+
+  /* Elementos gráficos (manual v3 · sección 06) */
+  --pattern-on-dark: var(--rune-hueso);   /* patrón denso sobre Basalto, opacidad 0.3–0.45 */
+  --pattern-on-muted: #B4AFA5;            /* patrón abierto sobre Niebla (papel de seda, cajas) */
+  --route-line-weight: 2px;               /* línea de recorrido Km 00 → Km 42 */
+}
+
+:root {
+  --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-cjk: 'Noto Sans JP', 'Noto Sans SC', 'Noto Sans KR', sans-serif;
+
+  --type-display: 96px;  --lh-display: 1;     --ls-display: -0.04em;
+  --type-h1: 72px;       --lh-h1: 1;          --ls-h1: -0.035em;
+  --type-h2: 48px;       --lh-h2: 1.08;       --ls-h2: -0.025em;
+  --type-h3: 30px;       --lh-h3: 1.22;       --ls-h3: -0.02em;
+  --type-h4: 20px;       --lh-h4: 1.2;        --ls-h4: -0.01em;
+  --type-lead: 18px;     --lh-lead: 1.55;
+  --type-body: 17px;     --lh-body: 1.6;
+  --type-small: 15px;    --lh-small: 1.55;
+  --type-caption: 13px;  --lh-caption: 1.45;
+  --type-label: 12px;    --ls-label: 0.18em;
+  --type-label-sm: 11px; --ls-label-sm: 0.16em;
+
+  --ls-wordmark: 0.2em;
+  --weight-wordmark: 800;
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 56px;
+  --space-9: 72px;
+  --space-10: 88px;
+
+  --radius-none: 0;
+  --border-width: 1px;
+  --page-gutter: 72px;
+  --section-gap: 80px;
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+}

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colección · RUNE</title>
+<link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.toolbar { position: sticky; top: var(--sticky-top, 112px); z-index: 10; background: var(--bg-page); border-top: 1px solid var(--border-strong); border-bottom: 1px solid var(--border-hairline); }
+.toolbar .inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding: 12px 0; }
+.toolbar .groups { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.toolbar .sep { width: 1px; align-self: stretch; background: var(--border-hairline); }
+.toolbar .right { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; font-size: 13px; color: var(--text-secondary); }
+.search { position: relative; }
+.search input { font: inherit; font-size: 15px; min-height: 44px; padding: 10px 14px 10px 40px; border: 1px solid var(--border-hairline); background: var(--surface-card); border-radius: 0; width: 220px; outline: none; color: var(--text-primary); }
+.search input:focus { border-color: var(--rune-petroleo); }
+.search .ico { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); }
+.sort { font: inherit; font-size: 14px; padding: 10px 12px; border: 1px solid var(--border-hairline); background: var(--surface-card); color: var(--text-primary); border-radius: 0; min-height: 44px; }
+.empty { padding: 72px 24px; text-align: center; background: var(--bg-page); grid-column: 1 / -1; }
+@media (max-width: 1100px) { .toolbar { position: static; } .toolbar .sep { display: none; } .search input { width: 100%; } .search { flex: 1 1 220px; } }
+</style>
+</head>
+<body>
+<div data-site-header data-active="coleccion"></div>
+
+<main id="contenido">
+  <section class="wrap page-head">
+    <nav class="crumbs" aria-label="Ruta"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><span aria-current="page" id="crumb">Colección</span></nav>
+    <div class="row-between" style="align-items:flex-end">
+      <h1 class="h1" id="title">Colección.</h1>
+      <p class="lead muted" style="max-width:52ch">500 modelos y estilos con la misma calidad en cualquier región. Aquí, una selección de 32 para empezar.</p>
+    </div>
+  </section>
+
+  <section class="toolbar" id="buscar">
+    <div class="wrap">
+      <div class="inner">
+        <div class="groups">
+          <div class="chips" role="group" aria-label="Línea" id="g-gender"></div>
+          <span class="sep" aria-hidden="true"></span>
+          <div class="chips" role="group" aria-label="Uso" id="g-use"></div>
+        </div>
+        <div class="right">
+          <label class="search"><span class="sr-only">Buscar modelo</span><span data-icon="search" data-size="18"></span><input type="search" id="q" placeholder="Buscar modelo o ref."></label>
+          <label style="display:inline-flex;align-items:center;gap:8px">Ordenar
+            <select class="sort" id="sort">
+              <option value="featured">Destacados</option>
+              <option value="name">Nombre A–Z</option>
+              <option value="use">Uso</option>
+              <option value="ref">Referencia</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:24px">
+    <p class="caption" aria-live="polite" id="count" style="margin-bottom:16px"></p>
+    <div class="cells g-4" id="grid"></div>
+    <p class="caption" style="margin-top:24px">Precio online de referencia en <span data-region-name></span>. En tiendas, el precio final lo fija cada minorista autorizado.</p>
+  </section>
+
+  <section class="wrap section section--last">
+    <div class="cells g-2">
+      <div class="cell cell--muted" style="padding:40px">
+        <span class="lbl-sm muted">¿Prefieres probártelas?</span>
+        <span class="h3">Encuentra un minorista autorizado.</span>
+        <p class="small muted">Las tiendas reciben su reposición en una semana.</p>
+        <a class="btn btn--primary btn--sm" href="tiendas.html" style="align-self:flex-start;margin-top:8px">Encuentra una tienda</a>
+      </div>
+      <div class="cell cell--muted" style="padding:40px">
+        <span class="lbl-sm muted">¿Dudas con la talla?</span>
+        <span class="h3">Mide tu pie en dos minutos.</span>
+        <p class="small muted">Tabla de equivalencias EU y largo del pie en centímetros.</p>
+        <a class="btn btn--secondary btn--sm" href="ayuda.html#tallas" style="align-self:flex-start;margin-top:8px">Guía de tallas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div data-site-footer></div>
+
+<script src="js/data.js"></script>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var R = window.RUNE, D = R.data, P = R.params;
+  var genders = ['Todos', 'Hombre', 'Mujer'];
+  var uses = ['Todos'].concat(D.uses.map(function (u) { return u.key; }));
+  var st = {
+    gender: (function (g) { g = (g || '').toLowerCase(); return g === 'hombre' ? 'Hombre' : g === 'mujer' ? 'Mujer' : 'Todos'; })(P.get('genero')),
+    use: uses.indexOf(P.get('uso')) > -1 ? P.get('uso') : 'Todos',
+    q: '', sort: 'featured'
+  };
+
+  function match(p, g, u) {
+    return (g === 'Todos' || p.gender === g) && (u === 'Todos' || p.use === u) &&
+      (!st.q || (p.name + ' ' + p.ref + ' ' + p.use + ' ' + p.spec).toLowerCase().indexOf(st.q) > -1);
+  }
+  function chips(el, list, key, other) {
+    el.innerHTML = list.map(function (v) {
+      var n = D.products.filter(function (p) { return key === 'gender' ? match(p, v, st.use) : match(p, st.gender, v); }).length;
+      return '<button type="button" class="chip" data-v="' + v + '" aria-pressed="' + (st[key] === v) + '">' + v + ' <span class="n">' + n + '</span></button>';
+    }).join('');
+  }
+  function syncUrl() {
+    var u = new URLSearchParams();
+    if (st.gender !== 'Todos') u.set('genero', st.gender.toLowerCase());
+    if (st.use !== 'Todos') u.set('uso', st.use);
+    history.replaceState(null, '', location.pathname + (u.toString() ? '?' + u : ''));
+  }
+  function render() {
+    var list = D.products.filter(function (p) { return match(p, st.gender, st.use); });
+    var by = {
+      featured: function (a, b) { return a.order - b.order; },
+      name: function (a, b) { return a.name.localeCompare(b.name, 'es'); },
+      use: function (a, b) { return a.use.localeCompare(b.use, 'es') || a.order - b.order; },
+      ref: function (a, b) { return a.ref.localeCompare(b.ref); }
+    }[st.sort];
+    list.sort(by);
+    document.getElementById('grid').innerHTML = list.length ? list.map(function (p) { return R.productCard(p); }).join('') :
+      '<div class="empty"><p class="h4">Ningún modelo coincide.</p><p class="small muted" style="margin-top:8px">Prueba con otra búsqueda o quita un filtro.</p></div>';
+    document.getElementById('count').textContent = list.length + (list.length === 1 ? ' modelo' : ' modelos');
+    var t = st.gender === 'Todos' ? 'Colección' : st.gender;
+    if (st.use !== 'Todos') t += ' · ' + st.use;
+    document.getElementById('title').textContent = t + '.';
+    document.getElementById('crumb').textContent = t;
+    document.title = t + ' · RUNE';
+    chips(document.getElementById('g-gender'), genders, 'gender');
+    chips(document.getElementById('g-use'), uses, 'use');
+  }
+  document.getElementById('g-gender').addEventListener('click', function (e) { var b = e.target.closest('[data-v]'); if (b) { st.gender = b.getAttribute('data-v'); syncUrl(); render(); } });
+  document.getElementById('g-use').addEventListener('click', function (e) { var b = e.target.closest('[data-v]'); if (b) { st.use = b.getAttribute('data-v'); syncUrl(); render(); } });
+  document.getElementById('q').addEventListener('input', function (e) { st.q = e.target.value.trim().toLowerCase(); render(); });
+  document.getElementById('sort').addEventListener('change', function (e) { st.sort = e.target.value; render(); });
+  var hdr = document.querySelector('.site-header');
+  if (hdr) document.documentElement.style.setProperty('--sticky-top', hdr.offsetHeight + 'px');
+  if (location.hash === '#buscar') setTimeout(function () { document.getElementById('q').focus(); }, 50);
+  render();
+})();
+</script>
+</body>
+</html>

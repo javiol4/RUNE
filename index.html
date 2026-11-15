@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RUNE · Calzado deportivo para larga distancia</title>
+<meta name="description" content="Calzado deportivo de larga distancia con la misma calidad en Norteamérica, Europa-África, Asia-Pacífico y Latinoamérica.">
+<link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.uses .stage { aspect-ratio: 4 / 3; }
+.uses .stage img { object-fit: contain; transform: scale(1.1); }
+.uses .pcard:hover .stage img { transform: scale(1.16); }
+.gender { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 1px; background: var(--rune-ceniza); border: 1px solid var(--rune-ceniza); }
+.gender a { background: var(--bg-page); text-decoration: none; display: grid; grid-template-rows: auto 1fr; }
+.gender .stage { aspect-ratio: 16 / 9; }
+.gender .stage img { object-fit: contain; transform: scale(1.04); }
+.gender a:hover .stage img { transform: scale(1.09); }
+.gender .txt { padding: 28px 32px 32px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+.gender a:hover { box-shadow: inset 0 0 0 1px var(--border-strong); }
+.ath-strip { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: var(--rune-grafito); }
+.ath-strip a { display: block; text-decoration: none; }
+.ath-strip .photo { aspect-ratio: 3 / 4; }
+@media (max-width: 900px) { .ath-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ath-strip a:last-child { grid-column: 1 / -1; } .ath-strip a:last-child .photo { aspect-ratio: 16 / 9; } }
+.region-cell { min-height: 200px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; background: var(--bg-page); color: inherit; cursor: pointer; border: 0; text-align: left; font: inherit; }
+.region-cell .sw { width: 28px; height: 4px; background: var(--acc); margin-bottom: 6px; visibility: hidden; }
+.region-cell[aria-pressed="true"] .sw { visibility: visible; }
+.region-cell:hover { box-shadow: inset 0 0 0 1px var(--border-strong); }
+.region-cell[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--rune-basalto); }
+.region-cell .go { margin-top: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; }
+</style>
+</head>
+<body>
+<div data-site-header data-active="inicio"></div>
+
+<main id="contenido">
+  <!-- Héroe -->
+  <section class="hero">
+    <div data-pattern data-cols="28" data-rows="9"></div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="lbl muted-inv">Colección Año 15 · 500 modelos</span>
+        <h1 class="display">Cada kilómetro.</h1>
+        <p class="lead measure" style="max-width:38ch">Mediasuela de doble densidad, upper tejido sin costuras y la misma calidad en Norteamérica, Europa-África, Asia-Pacífico y Latinoamérica.</p>
+        <div class="btns">
+          <a class="btn btn--accent" href="coleccion.html">Ver colección <span data-icon="arrow-right" data-size="18" data-class="ico--arrow"></span></a>
+          <a class="btn btn--ghost-inv" href="tiendas.html">Encuentra una tienda</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="img/marca/Packaging_Rune.jpg" alt="Caja de zapatillas RUNE con papel de seda estampado con el patrón de runas" width="816" height="1275">
+        <div class="route acc-global route--slim">
+          <div class="marks"><span>Km 00</span><span>Km 42</span></div>
+          <div class="rl"><i></i><span data-symbol></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promesas -->
+  <section class="wrap">
+    <div class="cells cells--flush g-4">
+      <div class="cell cell--sm"><span data-icon="shield-check" data-size="24"></span><span class="h4">Calidad 10 de 10</span><span class="small muted">La misma calificación de calidad en las cuatro regiones.</span></div>
+      <div class="cell cell--sm"><span data-icon="shoe" data-size="24"></span><span class="h4">500 modelos y estilos</span><span class="small muted">Running, training, trail y uso diario.</span></div>
+      <div class="cell cell--sm"><span data-icon="store" data-size="24"></span><span class="h4">Minoristas autorizados</span><span class="small muted">Reposición a tiendas en una semana.</span></div>
+      <div class="cell cell--sm"><span data-icon="truck" data-size="24"></span><span class="h4">Envío gratuito</span><span class="small muted">Desde el almacén de tu región, en las cuatro regiones.</span></div>
+    </div>
+  </section>
+
+  <!-- Destacados -->
+  <section class="wrap section">
+    <div class="sh"><span class="idx">01</span><h2>Destacados de la temporada</h2><a class="link-arrow aside" href="coleccion.html">Ver los 32 modelos <span data-icon="arrow-right" data-size="16"></span></a></div>
+    <div class="cells g-4" id="destacados"></div>
+  </section>
+
+  <!-- Hombre / Mujer -->
+  <section class="wrap section">
+    <div class="sh"><span class="idx">02</span><h2>Compra por línea</h2></div>
+    <div class="gender">
+      <a href="coleccion.html?genero=hombre">
+        <div class="stage"><img src="img/zapatillas/Zapatillas_hombre_3_3.png" alt="Ceniza Pace, zapatilla de running de hombre" loading="lazy"></div>
+        <div class="txt"><div class="stack gap-8"><span class="lbl-sm muted">16 modelos</span><span class="h2">Hombre</span></div><span class="link-arrow">Comprar <span data-icon="arrow-right" data-size="16"></span></span></div>
+      </a>
+      <a href="coleccion.html?genero=mujer">
+        <div class="stage"><img src="img/zapatillas/Zapatillas_mujer_2_3.jpg" alt="Coral Pace, zapatilla de running de mujer" loading="lazy"></div>
+        <div class="txt"><div class="stack gap-8"><span class="lbl-sm muted">16 modelos</span><span class="h2">Mujer</span></div><span class="link-arrow">Comprar <span data-icon="arrow-right" data-size="16"></span></span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Por uso -->
+  <section class="wrap section uses">
+    <div class="sh"><span class="idx">03</span><h2>Compra por uso</h2></div>
+    <div class="cells g-4" id="usos"></div>
+  </section>
+
+  <!-- Atletas -->
+  <section class="section">
+    <div class="band-dark on-dark">
+      <div class="wrap" style="padding-top:80px;padding-bottom:80px">
+        <div class="sh"><span class="idx">04 · Atletas RUNE</span><h2>Un estándar. Cinco atletas.</h2><a class="link-arrow aside" href="atletas.html" style="color:var(--rune-hueso)">Conoce a los embajadores <span data-icon="arrow-right" data-size="16"></span></a></div>
+        <div class="ath-strip" id="atletas"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regiones -->
+  <section id="regiones" class="wrap section">
+    <div class="sh"><span class="idx">05</span><h2>Elige tu región</h2><span class="aside caption">El precio y el envío se ajustan al almacén de tu región.</span></div>
+    <div class="cells g-4" id="region-cells"></div>
+  </section>
+
+  <!-- Historia -->
+  <section class="wrap section">
+    <div class="cells g-2">
+      <div class="route acc-global" style="min-height:380px">
+        <div class="marks"><span>Km 00</span><span>Km 42</span></div>
+        <div class="rl"><i></i><span data-symbol></span></div>
+        <p class="hl">Distancia larga.</p>
+      </div>
+      <div class="cell cell--muted" style="padding:48px;justify-content:center;gap:18px">
+        <span class="lbl muted">Nuestra historia</span>
+        <h2 class="h2">Nació en una pista universitaria de Ohio.</h2>
+        <p class="muted">Dos corredores no encontraban el calzado que necesitaban para la larga distancia. Lo diseñaron ellos.</p>
+        <a class="btn btn--primary btn--sm" href="historia.html" style="align-self:flex-start">Leer la historia</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marca -->
+  <section class="wrap section">
+    <div class="cells g-3">
+      <a class="cell" href="calidad.html"><span class="lbl-sm muted">Tecnología y calidad</span><span class="h3">Construido para durar.</span><span class="small muted">Materiales, control de calidad total y dos plantas con el mismo estándar.</span><span class="link-arrow" style="margin-top:auto">Ver más <span data-icon="arrow-right" data-size="16"></span></span></a>
+      <a class="cell" href="compromiso.html"><span class="lbl-sm muted">Compromiso RUNE</span><span class="h3">Responsables en cada paso.</span><span class="small muted">Guardería y cafetería en planta, ética, proveedores y medio ambiente.</span><span class="link-arrow" style="margin-top:auto">Ver más <span data-icon="arrow-right" data-size="16"></span></span></a>
+      <a class="cell" href="tiendas.html#mayorista"><span class="lbl-sm muted">Para minoristas</span><span class="h3">Vende RUNE en tu tienda.</span><span class="small muted">Reposición en una semana y 500 modelos para elegir.</span><span class="link-arrow" style="margin-top:auto">Solicitar alta <span data-icon="arrow-right" data-size="16"></span></span></a>
+    </div>
+  </section>
+
+  <section class="wrap section section--last">
+    <div class="tagline acc-global">
+      <div data-pattern data-cols="20" data-rows="3" style="opacity:.08"></div>
+      <div class="stack gap-12"><span class="lbl muted-inv">Lema</span><span class="t">Set In Stone</span></div>
+      <span data-symbol></span>
+    </div>
+  </section>
+</main>
+
+<div data-site-footer></div>
+
+<script src="js/data.js"></script>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var R = window.RUNE, D = R.data;
+  var feat = ['rn-0242', 'rn-0266', 'rn-0512', 'rn-0436'];
+  document.getElementById('destacados').innerHTML = feat.map(function (id, i) {
+    return R.productCard(R.byId(id), { badge: i === 0 ? 'Modelo insignia' : '' });
+  }).join('');
+
+  var useImg = { 'Running': 'rn-0270', 'Training': 'rn-0405', 'Trail': 'rn-0540', 'Uso diario': 'rn-0601' };
+  document.getElementById('usos').innerHTML = D.uses.map(function (u) {
+    var p = R.byId(useImg[u.key]);
+    var n = D.products.filter(function (x) { return x.use === u.key; }).length;
+    return '<a class="pcard" href="coleccion.html?uso=' + encodeURIComponent(u.key) + '"><div class="stage"><img src="' + p.img + '" alt="" loading="lazy"></div>' +
+      '<div class="body"><span class="meta">' + n + ' modelos</span><span class="name">' + u.key + '</span><span class="spec">' + u.desc + '</span></div></a>';
+  }).join('');
+
+  document.getElementById('atletas').innerHTML = D.athletes.map(function (a) {
+    return '<a class="photo-link" href="atletas.html#' + a.id + '"><div class="photo"><img class="bw" src="' + a.img + '" alt="' + R.esc(a.name) + '" style="object-position:' + a.pos + '" loading="lazy"><span class="name">' + R.esc(a.short) + '</span></div></a>';
+  }).join('');
+
+  var rc = document.getElementById('region-cells');
+  function drawRegions() {
+    var cur = R.region().key;
+    rc.innerHTML = D.regions.map(function (r) {
+      return '<button type="button" class="region-cell" data-key="' + r.key + '" aria-pressed="' + (r.key === cur) + '">' +
+        '<span class="sw" aria-hidden="true"></span><span class="lbl-sm muted">' + r.code + '</span>' +
+        '<span class="h3">' + r.name + '</span><span class="small muted">Tienda online · envío gratuito · precio medio USD ' + r.price + '</span>' +
+        '<span class="go">' + (r.key === cur ? 'Tu región ' + R.icon('check', 16) : 'Elegir ' + R.icon('arrow-right', 16)) + '</span></button>';
+    }).join('');
+  }
+  rc.addEventListener('click', function (e) { var b = e.target.closest('[data-key]'); if (b) R.setRegion(b.getAttribute('data-key')); });
+  document.addEventListener('rune:region', drawRegions);
+  drawRegions();
+})();
+</script>
+</body>
+</html>

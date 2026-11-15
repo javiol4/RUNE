@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inversionistas · RUNE</title>
+<link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.kpi .v { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 2.6vw, 36px); letter-spacing: -0.02em; line-height: 1.05; }
+.ok { display: inline-flex; align-items: center; gap: 8px; color: var(--petroleo-ui); font-weight: 500; }
+.doc { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 28px; text-decoration: none; }
+.doc:hover { box-shadow: inset 0 0 0 1px var(--border-strong); }
+.doc:hover .ico { transform: translateX(3px); }
+.doc .ico { transition: transform var(--dur-base) var(--ease-out); }
+section[id] { scroll-margin-top: 140px; }
+</style>
+</head>
+<body>
+<div data-site-header data-active="inversionistas"></div>
+
+<main id="contenido">
+  <section class="band-dark on-dark">
+    <div data-pattern data-cols="28" data-rows="6"></div>
+    <div class="wrap band-pad" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:end">
+      <div class="stack gap-24">
+        <span class="lbl muted-inv">Inversionistas · Resultados Año 15</span>
+        <h1 class="display">Valor que se sostiene.</h1>
+      </div>
+      <div class="stack gap-12" style="border-left:1px solid var(--rune-grafito);padding-left:32px">
+        <span class="lbl-sm muted-inv">Precio de la acción</span>
+        <span class="display" style="font-size:clamp(48px,6vw,80px)">USD 338.67</span>
+        <span class="small" style="color:var(--rune-ceniza)">El más alto de la industria al cierre del Año 15 (USD 30.00 al cierre del Año 10).</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="cells cells--flush" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))" id="kpis"></div>
+  </section>
+
+  <section class="wrap section">
+    <div class="sh"><span class="idx">01</span><h2>Objetivos del directorio y resultado</h2></div>
+    <div class="table-box">
+      <table class="t">
+        <thead><tr><th scope="col">Medida</th><th scope="col">Objetivo Año 15</th><th scope="col">Resultado Año 15</th><th scope="col">Estado</th></tr></thead>
+        <tbody id="targets"></tbody>
+      </table>
+    </div>
+    <p class="caption" style="margin-top:16px">Año 15: primer lugar del año (110 puntos) y segundo en el puntaje acumulado de la industria.</p>
+  </section>
+
+  <section class="wrap section">
+    <div class="sh"><span class="idx">02</span><h2>Retorno al accionista</h2></div>
+    <div class="cells g-3">
+      <div class="card"><span class="k">Dividendo</span><span class="t">USD 1.00 por acción</span><span class="d">Pagado en el Año 15.</span></div>
+      <div class="card"><span class="k">Recompra</span><span class="t">700 mil acciones</span><span class="d">Recompra de acciones del Año 15.</span></div>
+      <div class="card"><span class="k">Deuda</span><span class="t">Prepago del préstamo al 7.7 %</span><span class="d">Refinanciado con un préstamo a 5 años al 4.9 %.</span></div>
+    </div>
+  </section>
+
+  <section id="documentos" class="wrap section section--last">
+    <div class="sh"><span class="idx">03</span><h2>Documentos y prensa</h2></div>
+    <div class="cells g-2" id="docs"></div>
+  </section>
+</main>
+
+<div data-site-footer></div>
+<script src="js/data.js"></script>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var R = window.RUNE;
+  var k = [['Ingresos', 'USD 1,193.5 M'], ['Utilidad neta', 'USD 232.7 M'], ['EPS', 'USD 12.65'], ['ROE', '42.3 %'], ['Pares vendidos', '11.55 M'], ['Cuota de mercado', '16.4 %']];
+  document.getElementById('kpis').innerHTML = k.map(function (x) { return '<div class="cell cell--sm kpi"><span class="lbl-sm muted">' + x[0] + '</span><span class="v">' + x[1] + '</span></div>'; }).join('');
+  var t = [['Utilidad por acción (EPS)', 'USD 4.50', 'USD 12.65'], ['Rentabilidad sobre patrimonio (ROE)', '25 %', '42.3 %'], ['Precio de la acción', 'USD 100', 'USD 338.67'], ['Calificación crediticia', 'A−', 'A+'], ['Índice de imagen', '75', '100']];
+  document.getElementById('targets').innerHTML = t.map(function (x) { return '<tr><th scope="row">' + x[0] + '</th><td>' + x[1] + '</td><td><strong>' + x[2] + '</strong></td><td><span class="ok">' + R.icon('check-circle', 20) + 'Cumplido</span></td></tr>'; }).join('');
+  var d = [['Informe anual Año 15', 'PDF · [pendiente]'], ['Plan estratégico', 'Diferenciación por calidad · Años 11–15'], ['Gobierno corporativo', 'Directorio y gerencias'], ['Sala de prensa', 'Comunicados y kit de medios']];
+  document.getElementById('docs').innerHTML = d.map(function (x) { return '<a class="doc" href="#documentos"><span class="stack" style="gap:4px"><span class="h4">' + x[0] + '</span><span class="small muted">' + x[1] + '</span></span>' + R.icon('arrow-right', 20) + '</a>'; }).join('');
+})();
+</script>
+</body>
+</html>
