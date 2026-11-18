@@ -69,6 +69,7 @@ git push -u origin main
 
 ## Notas
 
-- Los textos entre corchetes (devoluciones, garantía, minoristas) son datos pendientes.
+- Políticas de devolución y garantía, y tiendas insignia: propuesta de políticas del prototipo, derivada de las decisiones del Año 15. Las 16 tiendas son ficticias (prototipo académico).
+- Único dato pendiente: el PDF del informe anual en Inversionistas.
 - La región elegida y la bolsa se guardan solo en el navegador de cada visitante (`localStorage`); no hay pagos ni envío real de formularios.
 - Las cifras de Inversionistas y la historia provienen del caso del simulador BSG.
