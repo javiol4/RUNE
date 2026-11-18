@@ -16,6 +16,22 @@
 .faq summary:hover { color: var(--petroleo-ui); }
 .faq p { padding: 0 0 24px; max-width: 70ch; color: var(--text-secondary); }
 section[id] { scroll-margin-top: 140px; }
+.ret { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 900px) { .ret { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .ret { grid-template-columns: 1fr; } }
+.warranty { display: grid; grid-template-columns: minmax(260px, 1fr) minmax(0, 2fr); gap: 1px; background: var(--rune-ceniza); border: 1px solid var(--rune-ceniza); }
+@media (max-width: 900px) { .warranty { grid-template-columns: 1fr; } }
+.w-head { background: var(--rune-basalto); color: var(--rune-hueso); padding: 40px; display: flex; flex-direction: column; gap: 12px; justify-content: flex-end; }
+.w-big { font-family: var(--font-display); font-weight: 800; font-size: clamp(56px, 6vw, 80px); line-height: .95; letter-spacing: -0.04em; }
+.w-body { border: 0; }
+.ticks { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 10px; font-size: 15px; }
+.ticks li { padding-left: 20px; position: relative; }
+.ticks li::before { content: ""; position: absolute; left: 0; top: .72em; width: 10px; height: 2px; background: var(--rune-petroleo); }
+.ticks--off li { color: var(--text-secondary); }
+.ticks--off li::before { background: var(--rune-ceniza); }
+.steps-3 { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 32px; border-top: 1px solid var(--border-strong); padding-top: 28px; }
+.steps-3 li { display: flex; flex-direction: column; gap: 8px; }
+.steps-3 .n { font-size: 12px; letter-spacing: .2em; color: var(--text-secondary); }
 </style>
 </head>
 <body>
@@ -31,9 +47,9 @@ section[id] { scroll-margin-top: 140px; }
   <section class="wrap">
     <div class="cells g-4">
       <a class="cell cell--sm" href="#faq"><span data-icon="truck" data-size="24"></span><span class="h4">Envío gratuito</span><span class="small muted">Desde el almacén de tu región.</span></a>
-      <a class="cell cell--sm" href="#faq"><span data-icon="return" data-size="24"></span><span class="h4">Devoluciones</span><span class="small muted">Plazos y condiciones.</span></a>
+      <a class="cell cell--sm" href="#devoluciones"><span data-icon="return" data-size="24"></span><span class="h4">Devoluciones</span><span class="small muted">30 días, sin costo.</span></a>
       <a class="cell cell--sm" href="#tallas"><span data-icon="size" data-size="24"></span><span class="h4">Guía de tallas</span><span class="small muted">EU y largo del pie.</span></a>
-      <a class="cell cell--sm" href="#faq"><span data-icon="shield-check" data-size="24"></span><span class="h4">Garantía</span><span class="small muted">Defectos de fabricación.</span></a>
+      <a class="cell cell--sm" href="#garantia"><span data-icon="shield-check" data-size="24"></span><span class="h4">Garantía</span><span class="small muted">24 meses por defectos de fabricación.</span></a>
     </div>
   </section>
 
@@ -42,14 +58,51 @@ section[id] { scroll-margin-top: 140px; }
     <div class="faq">
       <details open><summary>¿Desde dónde se envía mi pedido?<span data-icon="plus" data-size="20"></span></summary><p>Desde el almacén de distribución de tu región: Norteamérica, Europa-África, Asia-Pacífico o Latinoamérica.</p></details>
       <details><summary>¿Cuánto cuesta el envío?<span data-icon="plus" data-size="20"></span></summary><p>Nada. El envío es gratuito en las cuatro regiones para todas las compras en la tienda online.</p></details>
-      <details><summary>¿Puedo devolver un par?<span data-icon="plus" data-size="20"></span></summary><p>[Plazo y condiciones de devolución].</p></details>
+      <details><summary>¿Puedo devolver un par?<span data-icon="plus" data-size="20"></span></summary><p>Sí. Tienes 30 días desde la entrega para devolver tu compra online, sin uso exterior y con su caja y etiquetas. La devolución es gratuita: te enviamos una etiqueta prepagada. <a class="link" href="#devoluciones">Ver condiciones</a>.</p></details>
+      <details><summary>¿Puedo cambiar de talla o de modelo?<span data-icon="plus" data-size="20"></span></summary><p>Sí. Cada pedido incluye un cambio gratuito de talla o de modelo dentro de los 30 días.</p></details>
+      <details><summary>¿Cuándo recibo mi reintegro?<span data-icon="plus" data-size="20"></span></summary><p>Entre 5 y 10 días hábiles después de recibir el par, en el mismo medio de pago que usaste.</p></details>
       <details><summary>¿El precio online es igual al de las tiendas?<span data-icon="plus" data-size="20"></span></summary><p>El precio online es un precio de referencia por región. En tiendas, el precio final lo fija cada minorista autorizado.</p></details>
-      <details><summary>¿Qué cubre la garantía?<span data-icon="plus" data-size="20"></span></summary><p>[Cobertura de garantía por defectos de fabricación].</p></details>
+      <details><summary>¿Ofrecen reembolsos por correo?<span data-icon="plus" data-size="20"></span></summary><p>No. El precio online de cada región es el precio final, sin reembolsos posteriores por correo.</p></details>
+      <details><summary>¿Qué cubre la garantía?<span data-icon="plus" data-size="20"></span></summary><p>Defectos de fabricación durante 24 meses desde la compra: despegue de suela, apertura de costuras, fallas de materiales o del pegado, deformación prematura de la mediasuela y fallas de ojales o contrafuerte. <a class="link" href="#garantia">Ver garantía</a>.</p></details>
     </div>
   </section>
 
+  <section id="devoluciones" class="wrap section">
+    <div class="sh"><span class="idx">02</span><h2>Devoluciones y cambios</h2><span class="aside caption">Compras en la tienda online</span></div>
+    <div class="cells ret">
+      <div class="card"><span class="k">Plazo</span><span class="t">30 días desde la entrega</span><span class="d">Para cualquier compra en la tienda online, en las cuatro regiones.</span></div>
+      <div class="card"><span class="k">Estado del par</span><span class="t">Sin uso exterior</span><span class="d">Con su caja y sus etiquetas originales.</span></div>
+      <div class="card"><span class="k">Costo</span><span class="t">Gratis</span><span class="d">Te enviamos una etiqueta prepagada, igual que el envío.</span></div>
+      <div class="card"><span class="k">Cambios</span><span class="t">1 cambio gratuito por pedido</span><span class="d">De talla o de modelo, dentro de los 30 días.</span></div>
+      <div class="card"><span class="k">Reintegro</span><span class="t">5 a 10 días hábiles</span><span class="d">Al mismo medio de pago que usaste en la compra.</span></div>
+      <div class="card"><span class="k">Compras en tienda</span><span class="t">Rige la política del minorista</span><span class="d">RUNE apoya los cambios de talla durante 30 días. <a class="link" href="tiendas.html">Encuentra una tienda</a></span></div>
+    </div>
+  </section>
+
+  <section id="garantia" class="wrap section">
+    <div class="sh"><span class="idx">03</span><h2>Garantía por defectos de fabricación</h2></div>
+    <div class="warranty">
+      <div class="w-head">
+        <span class="lbl muted-inv">Garantía RUNE</span>
+        <span class="w-big">24 meses</span>
+        <span class="small" style="color:var(--rune-ceniza)">Desde la fecha de compra, online o en un minorista autorizado.</span>
+      </div>
+      <div class="cells g-2 w-body">
+        <div class="cell"><span class="lbl-sm muted">Cubre</span>
+          <ul class="ticks"><li>Despegue de suela</li><li>Apertura de costuras</li><li>Fallas de materiales o del pegado</li><li>Deformación prematura de la mediasuela</li><li>Fallas de ojales o contrafuerte</li></ul></div>
+        <div class="cell"><span class="lbl-sm muted">No cubre</span>
+          <ul class="ticks ticks--off"><li>Desgaste normal por uso</li><li>Mal uso</li><li>Lavado en lavadora</li><li>Exposición a calor directo</li><li>Reparaciones de terceros</li><li>Daños estéticos que no afectan la funcionalidad</li></ul></div>
+      </div>
+    </div>
+    <ol class="steps-3">
+      <li><span class="n">01</span><span class="h4">Solicita</span><span class="small muted">En esta web o en tu minorista, con el comprobante de compra y fotos del defecto.</span></li>
+      <li><span class="n">02</span><span class="h4">Evaluamos</span><span class="small muted">El servicio al cliente del centro de distribución de tu región responde en 5 días hábiles.</span></li>
+      <li><span class="n">03</span><span class="h4">Resolvemos</span><span class="small muted">Reemplazo por el mismo modelo; si no hay stock, un modelo de valor equivalente o el reembolso.</span></li>
+    </ol>
+  </section>
+
   <section id="tallas" class="wrap section">
-    <div class="sh"><span class="idx">02</span><h2>Guía de tallas</h2><span class="aside caption">Mide tu pie de pie, del talón a la punta del dedo más largo.</span></div>
+    <div class="sh"><span class="idx">04</span><h2>Guía de tallas</h2><span class="aside caption">Mide tu pie de pie, del talón a la punta del dedo más largo.</span></div>
     <div class="table-box">
       <table class="t">
         <tbody id="sizes"></tbody>
@@ -60,7 +113,7 @@ section[id] { scroll-margin-top: 140px; }
   <section id="contacto" class="wrap section section--last">
     <div class="band-muted" style="padding:clamp(32px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px;align-items:start">
       <div class="stack gap-16">
-        <span class="lbl muted">03 · Contacto</span>
+        <span class="lbl muted">05 · Contacto</span>
         <h2 class="h2">Escríbenos.</h2>
         <p class="muted">Te responde el equipo de atención de <span data-region-name></span>.</p>
       </div>
