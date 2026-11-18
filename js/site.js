@@ -164,6 +164,7 @@
     panel.innerHTML = head + '<ul>' + list + '</ul><footer>' +
       '<div class="row"><span>Subtotal · ' + reg.name + '</span><strong>USD ' + (reg.price * items.length) + '</strong></div>' +
       '<div class="row caption"><span>Envío desde tu almacén regional</span><span>Gratis</span></div>' +
+      '<div class="row caption"><span>Devolución en 30 días</span><span>Gratis</span></div>' +
       '<a class="btn btn--accent" href="ayuda.html#contacto">Finalizar compra ' + icon('arrow-right', 18, 'ico--arrow') + '</a></footer>';
   }
 

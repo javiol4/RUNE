@@ -118,6 +118,35 @@
     { name: 'Hamilton',   cells: ['', '', '', 'Entra'] }
   ];
 
+  // Tiendas insignia · Politicas_sitio_web_RUNE.md, sección 3.
+  // Nombres y direcciones ficticios, creados para el prototipo académico.
+  var stores = {
+    na: [
+      { name: 'Stride Athletics', addr: '1420 N. Michigan Ave.', city: 'Chicago, IL, EE. UU.' },
+      { name: 'Summit Run Co.', addr: '875 Larimer St.', city: 'Denver, CO, EE. UU.' },
+      { name: 'Pacific Track Outfitters', addr: '310 SW Morrison St.', city: 'Portland, OR, EE. UU.' },
+      { name: 'Metro Sport Footwear', addr: '220 Queen St. W.', city: 'Toronto, ON, Canadá' }
+    ],
+    emea: [
+      { name: 'Läufer Sporthaus', addr: 'Friedrichstraße 112', city: 'Berlín, Alemania' },
+      { name: 'Corsa Sport', addr: 'Corso Buenos Aires 45', city: 'Milán, Italia' },
+      { name: 'Pista Running', addr: 'Calle de Fuencarral 88', city: 'Madrid, España' },
+      { name: 'Savanna Run', addr: '54 Long Street', city: 'Ciudad del Cabo, Sudáfrica' }
+    ],
+    apac: [
+      { name: 'Kizuna Running', addr: '3-12-7 Shibuya', city: 'Tokio, Japón' },
+      { name: 'Lion City Athletics', addr: '290 Orchard Road #03-15', city: 'Singapur' },
+      { name: 'Harbour Sports', addr: '412 George St.', city: 'Sídney, Australia' },
+      { name: 'Seoul Stride', addr: '25 Gangnam-daero', city: 'Seúl, Corea del Sur' }
+    ],
+    latam: [
+      { name: 'Pulso Deportivo', addr: 'Av. Insurgentes Sur 1235', city: 'Ciudad de México, México' },
+      { name: 'Passo Esporte', addr: 'Rua Oscar Freire 640', city: 'São Paulo, Brasil' },
+      { name: 'Correr Sur', addr: 'Av. Providencia 2140', city: 'Santiago, Chile' },
+      { name: 'Andes Running', addr: 'Av. Ballivián 560 (El Prado)', city: 'Cochabamba, Bolivia' }
+    ]
+  };
+
   window.RUNE = window.RUNE || {};
-  window.RUNE.data = { regions: regions, uses: uses, products: products, athletes: athletes, timeline: timeline };
+  window.RUNE.data = { regions: regions, uses: uses, products: products, athletes: athletes, timeline: timeline, stores: stores };
 })();
