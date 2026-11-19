@@ -31,11 +31,21 @@
 }
 @media (max-width: 560px) { .ath-info .facts { grid-template-columns: 1fr; } .ath-info .txt { padding: 28px 20px; } }
 
-.tl { display: grid; grid-template-columns: minmax(120px, 1.3fr) repeat(4, minmax(90px, 1fr)); gap: 1px; background: var(--rune-ceniza); border: 1px solid var(--rune-ceniza); min-width: 620px; }
-.tl > div { background: var(--bg-page); padding: 14px 16px; font-size: 15px; }
-.tl .h { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-secondary); background: var(--surface-muted); }
-.tl .on { background: var(--rune-basalto); color: var(--rune-hueso); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
-.tl .tn { font-family: var(--font-display); font-weight: 600; }
+.camps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 24px; }
+@media (max-width: 1000px) { .camps { grid-template-columns: 1fr; } }
+.camp { display: flex; flex-direction: column; }
+.camp .piece { border: 1px solid var(--rune-ceniza); display: flex; flex-direction: column; }
+.camp .cast { display: grid; gap: 1px; background: var(--rune-ceniza); aspect-ratio: 16 / 8; }
+.camp .cast.n2 { grid-template-columns: 1fr 1fr; }
+.camp .cast.n3 { grid-template-columns: 1fr 1fr 1fr; }
+.camp .cast .photo { height: 100%; }
+.camp .cast .photo img { position: absolute; inset: 0; }
+.camp .route { min-height: 0; padding: 20px 24px; gap: 14px; }
+.camp .route .hl { font-size: clamp(26px, 2.6vw, 36px); }
+.camp .cap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 14px; }
+.camp .cap .sw { display: inline-flex; align-items: center; gap: 8px; }
+.camp .cap .sw i { width: 10px; height: 10px; background: var(--acc); display: inline-block; }
+.camp p { margin-top: 10px; max-width: 60ch; }
 </style>
 </head>
 <body>
@@ -58,21 +68,9 @@
 
   <section class="wrap section" id="embajadores"></section>
 
-  <section class="wrap section">
-    <div class="sh"><span class="idx">02</span><h2>Presencia por campaña</h2><span class="aside caption">Años 13 a 16</span></div>
-    <div style="overflow-x:auto">
-      <div class="tl" role="table" aria-label="Presencia de cada atleta por año" id="tl"></div>
-    </div>
-  </section>
-
-  <section class="wrap section">
-    <div class="sh"><span class="idx">03</span><h2>El programa de embajadores</h2></div>
-    <div class="cells g-4">
-      <div class="card"><span class="k">Alcance</span><span class="t">Global</span><span class="d">Cada contrato apoya a la marca en las cuatro regiones, no en una sola.</span></div>
-      <div class="card"><span class="k">Producto</span><span class="t">Probado en competencia</span><span class="d">Los atletas usan los mismos modelos que llegan a tienda.</span></div>
-      <div class="card"><span class="k">Color</span><span class="t">El mercado decide el acento</span><span class="d">Las piezas globales van en Petróleo; cada edición regional, con su acento.</span></div>
-      <div class="card"><span class="k">Imagen</span><span class="t">Coherente con la marca</span><span class="d">Solo atletas cuyo nivel respalde una promesa de calidad.</span></div>
-    </div>
+  <section class="wrap section" id="campanas">
+    <div class="sh"><span class="idx">02</span><h2>Campañas A13–A16</h2><span class="aside caption">Alcance global, probado en competencia</span></div>
+    <div class="camps" id="camps"></div>
   </section>
 
   <section class="wrap section section--last">
@@ -108,24 +106,31 @@
     D.athletes.map(function (a, i) {
       return '<article class="ath acc-' + a.region + '" id="' + a.id + '" aria-labelledby="n-' + a.id + '">' +
         '<div class="ath-media">' +
-          '<div class="photo"><img src="' + a.img + '" alt="' + e(a.name) + ' con calzado RUNE" style="object-position:' + a.pos + '" loading="lazy"></div>' +
+          '<div class="photo"><img' + (a.bw ? ' class="bw"' : '') + ' src="' + a.img + '" alt="' + e(a.name) + ' con calzado RUNE" style="object-position:' + a.pos + '" loading="lazy"></div>' +
           '<div class="photo"><img class="bw" src="' + a.img2 + '" alt="" style="object-position:' + a.pos2 + '" loading="lazy"></div>' +
         '</div>' +
         '<div class="ath-info">' +
           '<div class="txt"><span class="lbl-sm muted">' + String(i + 1).padStart(2, '0') + ' · ' + e(a.sport) + '</span>' +
           '<h3 class="h2" id="n-' + a.id + '">' + e(a.name) + '</h3>' +
           '<p class="muted">' + e(a.text) + '</p></div>' +
-          '<div class="facts"><div><span class="lbl-sm muted">Embajador desde</span><span class="v">' + a.since + '</span></div>' +
-          '<div><span class="lbl-sm muted">Edición</span><span class="v">' + a.regionName + '</span></div>' +
-          '<div><span class="lbl-sm muted">Campaña</span><span class="v">' + e(a.campaign.split(' · ')[0]) + '</span></div></div>' +
+          '<div class="facts"><div><span class="lbl-sm muted">Campañas</span><span class="v">' + a.years + '</span></div>' +
+          '<div><span class="lbl-sm muted">Encabeza</span><span class="v">' + a.leads + '</span></div>' +
+          '<div><span class="lbl-sm muted">Edición</span><span class="v">' + a.regionName + '</span></div></div>' +
           '<div class="route route--slim"><div class="marks"><span>' + a.from + '</span><span>Edición ' + e(a.short) + '</span><span>' + a.to + '</span></div>' +
           '<div class="rl"><i></i>' + R.symbol() + '</div><p class="hl">' + e(a.headline) + '</p></div>' +
         '</div></article>';
     }).join('') + '</div>';
 
-  var head = '<div class="h">Atleta</div><div class="h">A13</div><div class="h">A14</div><div class="h">A15</div><div class="h">A16</div>';
-  document.getElementById('tl').innerHTML = head + D.timeline.map(function (r) {
-    return '<div class="tn">' + r.name + '</div>' + r.cells.map(function (c) { return '<div class="' + (c ? 'on' : '') + '">' + (c || '<span class="sr-only">Sin presencia</span>') + '</div>'; }).join('');
+  var names = {}; D.athletes.forEach(function (a) { names[a.id] = a.short; });
+  document.getElementById('camps').innerHTML = D.campaigns.map(function (c) {
+    return '<article class="camp acc-' + c.region + '"><div class="piece">' +
+      '<div class="cast n' + c.cast.length + '">' + c.cast.map(function (x, i) {
+        return '<div class="photo"><img class="bw" src="' + c.photos[i] + '" alt="' + e(names[x[0]]) + '" style="object-position:' + x[1] + '" loading="lazy"><span class="name">' + e(names[x[0]]) + '</span></div>';
+      }).join('') + '</div>' +
+      '<div class="route"><div class="marks"><span>' + c.from + '</span><span>Campaña ' + c.year + ' · ' + c.regionName + '</span><span>' + c.to + '</span></div>' +
+      '<div class="rl"><i></i>' + R.symbol() + '</div><p class="hl">' + e(c.headline) + '</p></div></div>' +
+      '<div class="cap"><span class="lbl-sm muted">' + c.year + ' · ' + e(c.stage) + '</span><span class="lbl-sm sw"><i aria-hidden="true"></i>' + e(c.tag) + '</span></div>' +
+      '<p class="small muted">' + e(c.note) + '</p></article>';
   }).join('');
 })();
 </script>
