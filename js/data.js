@@ -1,6 +1,6 @@
 /* RUNE · Datos del prototipo.
    Fotos de producto: img/zapatillas (el género sale del nombre del archivo).
-   Fotos de atletas: img/atletas (mismas piezas que las campañas A13–A16).
+   Fotos de atletas: img/atletas (mismas fotos que las campañas A13–A16).
    Nombres y descripciones de modelo son de prototipo: revisar antes de publicar. */
 (function () {
   var IMG = 'img/zapatillas/';
@@ -71,51 +71,65 @@
     };
   });
 
-  // Embajadores · campañas A13–A16 (carpeta campanas)
+  // Embajadores · campañas A13–A16 (campanas/campanas-A13-A16.html).
+  // Fotos retocadas, sin logos de terceros (salvo Fórmula 1 en Hamilton).
+  var A = 'img/atletas/';
   var athletes = [
     {
-      id: 'haaland', name: 'Erling Haaland', short: 'E. Haaland', sport: 'Fútbol', since: 'Año 13',
-      region: 'emea', regionName: 'Europa-África', from: 'Min 00', to: 'Min 90',
+      id: 'haaland', name: 'Erling Haaland', short: 'E. Haaland', sport: 'Fútbol', since: 'Año 13', years: 'A13–A14',
+      region: 'apac', regionName: 'Asia-Pacífico', leads: 'Norteamérica · Asia-Pacífico', from: 'Min 00', to: 'Min 90',
       headline: 'Siempre llega.', campaign: 'A13 · Mismo estándar.',
-      text: 'Lanzó la plataforma «Mismo estándar» en el Año 13 junto a Jude Bellingham. Potencia y constancia de principio a fin del partido.',
-      img: 'img/atletas/Haaland_Rune_2.jpg', img2: 'img/atletas/Haaland_Rune_1.jpg', pos: '50% 30%', pos2: '50% 10%'
+      text: 'Lanzó la marca en el Año 13 junto a Jude Bellingham con «Mismo estándar.». Encabeza las piezas de Norteamérica y Asia-Pacífico.',
+      img: A + 'Haaland_Rune_2.jpg', img2: A + 'Haaland_Rune_1.jpg', pos: '50% 30%', pos2: '50% 10%', bw: true
     },
     {
-      id: 'bellingham', name: 'Jude Bellingham', short: 'J. Bellingham', sport: 'Fútbol', since: 'Año 13',
-      region: 'emea', regionName: 'Europa-África', from: 'Min 00', to: 'Min 90',
-      headline: 'Todo el campo es tuyo.', campaign: 'A13–A15 · Puente entre campañas.',
-      text: 'Presente desde el lanzamiento. Su edición se adapta a las cuatro regiones sin cambiar el producto: solo cambia el acento.',
-      img: 'img/atletas/Bellingham_Rune_1.jpg', img2: 'img/atletas/Bellingham_Rune_2.jpg', pos: '50% 22%', pos2: '50% 30%'
+      id: 'bellingham', name: 'Jude Bellingham', short: 'J. Bellingham', sport: 'Fútbol', since: 'Año 13', years: 'A13–A15',
+      region: 'emea', regionName: 'Europa-África', leads: 'Europa-África · Latinoamérica', from: 'Min 00', to: 'Min 90',
+      headline: 'Todo el campo es tuyo.', campaign: 'A13–A15',
+      text: 'Presente desde el lanzamiento. Encabeza Europa-África y Latinoamérica, y hace de puente hacia «Tres ritmos. Un estándar.» en el Año 15.',
+      img: A + 'Bellingham_Rune_1.jpg', img2: A + 'Bellingham_Rune_2.jpg', pos: '50% 22%', pos2: '50% 25%', bw: true
     },
     {
-      id: 'messi', name: 'Lionel Messi', short: 'L. Messi', sport: 'Fútbol', since: 'Año 15',
-      region: 'latam', regionName: 'Latinoamérica', from: 'Min 00', to: 'Min 90',
-      headline: 'Cada paso cuenta.', campaign: 'A15 · Tres ritmos. Un estándar.',
-      text: 'Llega en el Año 15 para la campaña «Tres ritmos. Un estándar.», con edición propia para Latinoamérica.',
-      img: 'img/atletas/Messi_Rune_1.jpg', img2: 'img/atletas/Messi_Rune_2.jpg', pos: '50% 40%', pos2: '50% 60%'
+      id: 'messi', name: 'Lionel Messi', short: 'L. Messi', sport: 'Fútbol', since: 'Año 15', years: 'A15–A16',
+      region: 'latam', regionName: 'Latinoamérica', leads: 'Latinoamérica · Europa-África', from: 'Min 00', to: 'Min 90',
+      headline: 'El partido se lee caminando.', campaign: 'A15–A16',
+      text: 'Llega en el Año 15 con «Tres ritmos. Un estándar.». Su edición es de Latinoamérica, donde sigue en el Año 16 junto a Vozinha.',
+      img: A + 'Messi_Rune_1.jpg', img2: A + 'Messi_Rune_2.jpg', pos: '45% 50%', pos2: '50% 50%', bw: false
     },
     {
-      id: 'vozinha', name: 'Vozinha', short: 'Vozinha', sport: 'Fútbol · Cabo Verde', since: 'Año 15',
-      region: 'emea', regionName: 'Europa-África', from: 'Min 00', to: 'Min 90',
-      headline: 'Firme en cualquier parte.', campaign: 'A15–A16 · Set In Stone.',
-      text: 'Guardameta de Cabo Verde. Lleva la promesa de RUNE a mercados de África con la misma exigencia que en cualquier estadio.',
-      img: 'img/atletas/Vozinha_Rune_2.jpg', img2: 'img/atletas/Vozinha_Rune_1.jpg', pos: '50% 30%', pos2: '50% 20%'
+      id: 'vozinha', name: 'Vozinha', short: 'Vozinha', sport: 'Fútbol · Cabo Verde', since: 'Año 15', years: 'A15–A16',
+      region: 'na', regionName: 'Norteamérica', leads: 'Norteamérica · Latinoamérica', from: 'Min 00', to: 'Min 90',
+      headline: 'Firme en cualquier parte.', campaign: 'A15–A16',
+      text: 'Guardameta de Cabo Verde. Acompaña las piezas de producto en Norteamérica y forma dúo con Messi en Latinoamérica.',
+      img: A + 'Vozinha_Rune_2.jpg', img2: A + 'Vozinha_Rune_1.jpg', pos: '50% 35%', pos2: '50% 40%', bw: false
     },
     {
-      id: 'hamilton', name: 'Lewis Hamilton', short: 'L. Hamilton', sport: 'Fórmula 1', since: 'Año 16',
-      region: 'na', regionName: 'Norteamérica', from: 'Km 00', to: 'Km 305',
+      id: 'hamilton', name: 'Lewis Hamilton', short: 'L. Hamilton', sport: 'Fórmula 1', since: 'Año 16', years: 'A16',
+      region: 'apac', regionName: 'Asia-Pacífico', leads: 'Europa-África · Asia-Pacífico', from: 'Km 00', to: 'Km 305',
       headline: '305 km. Mismo ritmo.', campaign: 'A16 · Distancia larga.',
-      text: 'Se incorpora en el Año 16 y lleva la línea de recorrido a la distancia de un Gran Premio: 305 kilómetros al mismo nivel.',
-      img: 'img/atletas/Hamilton_Rune_2.jpg', img2: 'img/atletas/Hamilton_Rune_1.jpg', pos: '50% 20%', pos2: '50% 40%'
+      text: 'Se incorpora en el Año 16 y encabeza «Distancia larga.» en Europa-África. La línea de recorrido llega a la distancia de un Gran Premio: 305 kilómetros.',
+      img: A + 'Hamilton_Rune_2.jpg', img2: A + 'Hamilton_Rune_1.jpg', pos: '50% 30%', pos2: '50% 90%', bw: true
     }
   ];
 
-  var timeline = [
-    { name: 'Haaland',    cells: ['Lanza', 'Refuerza', '', ''] },
-    { name: 'Bellingham', cells: ['Lanza', 'Refuerza', 'Puente', ''] },
-    { name: 'Messi',      cells: ['', '', 'Entra', 'Puente'] },
-    { name: 'Vozinha',    cells: ['', '', 'Entra', 'Puente'] },
-    { name: 'Hamilton',   cells: ['', '', '', 'Entra'] }
+  // Campañas: atleta(s), región principal y titular de cada año.
+  var campaigns = [
+    { year: 'A13', tag: 'Pieza global', stage: 'Lanzamiento', headline: 'Mismo estándar.', region: 'global', regionName: 'Global',
+      from: 'Min 00', to: 'Min 90', cast: [['haaland', '50% 30%'], ['bellingham', '50% 25%']],
+      photos: [A + 'Haaland_Rune_2.jpg', A + 'Bellingham_Rune_1.jpg'],
+      note: 'El dúo presenta la marca. Haaland abre Norteamérica y Asia-Pacífico; Bellingham, Europa-África y Latinoamérica.' },
+    { year: 'A14', tag: 'Vía pública · Asia-Pacífico', stage: 'Refuerzo', headline: '90 minutos. Mismo ritmo.', region: 'apac', regionName: 'Asia-Pacífico',
+      from: 'Min 00', to: 'Min 90', cast: [['haaland', '50% 35%'], ['bellingham', '50% 15%']],
+      photos: [A + 'Haaland_Rune_2.jpg', A + 'Bellingham_Rune_2.jpg'],
+      note: 'Se repiten los titulares para construir reconocimiento. Cada mercado ve a su atleta; cambia el acento, no el mensaje.' },
+    { year: 'A15', tag: 'Región principal · Latinoamérica', stage: 'Transición', headline: 'Tres ritmos. Un estándar.', region: 'latam', regionName: 'Latinoamérica',
+      from: 'Min 00', to: 'Min 90', cast: [['bellingham', '50% 20%'], ['messi', '30% 50%'], ['vozinha', '50% 40%']],
+      photos: [A + 'Bellingham_Rune_2.jpg', A + 'Messi_Rune_1.jpg', A + 'Vozinha_Rune_1.jpg'],
+      note: 'Región principal: Latinoamérica, con el trío. Bellingham y Messi en Europa-África; mensaje de producto en Norteamérica y Asia-Pacífico.' },
+    { year: 'A16', tag: 'Región principal · Europa-África', stage: 'Distancia larga', headline: 'Distancia larga.', region: 'emea', regionName: 'Europa-África',
+      from: 'Km 00', to: 'Km 305', cast: [['hamilton', '50% 40%'], ['messi', '30% 50%'], ['vozinha', '50% 45%']],
+      photos: [A + 'Hamilton_Rune_2.jpg', A + 'Messi_Rune_1.jpg', A + 'Vozinha_Rune_2.jpg'],
+      note: 'Región principal: Europa-África, con Hamilton al frente. Messi y Vozinha en Latinoamérica; mensaje de producto en Norteamérica y Asia-Pacífico.' }
   ];
 
   // Tiendas insignia · Politicas_sitio_web_RUNE.md, sección 3.
@@ -148,5 +162,5 @@
   };
 
   window.RUNE = window.RUNE || {};
-  window.RUNE.data = { regions: regions, uses: uses, products: products, athletes: athletes, timeline: timeline, stores: stores };
+  window.RUNE.data = { regions: regions, uses: uses, products: products, athletes: athletes, campaigns: campaigns, stores: stores };
 })();
