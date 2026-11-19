@@ -78,14 +78,14 @@
       region: 'emea', regionName: 'Europa-África', from: 'Min 00', to: 'Min 90',
       headline: 'Siempre llega.', campaign: 'A13 · Mismo estándar.',
       text: 'Lanzó la plataforma «Mismo estándar» en el Año 13 junto a Jude Bellingham. Potencia y constancia de principio a fin del partido.',
-      img: 'img/atletas/Haaland_Rune_2.jpg', img2: 'img/atletas/Haaland_Rune_1.png', pos: '50% 30%', pos2: '50% 10%'
+      img: 'img/atletas/Haaland_Rune_2.jpg', img2: 'img/atletas/Haaland_Rune_1.jpg', pos: '50% 30%', pos2: '50% 10%'
     },
     {
       id: 'bellingham', name: 'Jude Bellingham', short: 'J. Bellingham', sport: 'Fútbol', since: 'Año 13',
       region: 'emea', regionName: 'Europa-África', from: 'Min 00', to: 'Min 90',
       headline: 'Todo el campo es tuyo.', campaign: 'A13–A15 · Puente entre campañas.',
       text: 'Presente desde el lanzamiento. Su edición se adapta a las cuatro regiones sin cambiar el producto: solo cambia el acento.',
-      img: 'img/atletas/Bellingham_Rune_1.jpg', img2: 'img/atletas/Bellingham_Rune_2.png', pos: '50% 22%', pos2: '50% 30%'
+      img: 'img/atletas/Bellingham_Rune_1.jpg', img2: 'img/atletas/Bellingham_Rune_2.jpg', pos: '50% 22%', pos2: '50% 30%'
     },
     {
       id: 'messi', name: 'Lionel Messi', short: 'L. Messi', sport: 'Fútbol', since: 'Año 15',
